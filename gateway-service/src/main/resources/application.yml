@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: gateway-service
+    cloud:
+      gateway:
+        routes:
+          - id: user-service
+            uri: lb://user-service
+            predicates:
+              - Path=/user/**
+          - id: product-service
+            uri: lb://product-service
+            predicates:
+              - Path=/product/**
+          - id: discovery-server
+            uri: http://localhost:8761
+            predicates:
+              - Path=/eureka/web
