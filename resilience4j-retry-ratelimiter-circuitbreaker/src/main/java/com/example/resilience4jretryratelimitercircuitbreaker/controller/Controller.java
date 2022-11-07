@@ -28,8 +28,8 @@ public class Controller {
     private static final String SERVICE_RESILIENCE4J = "serviceResilience4j";
     @GetMapping
 //    @CircuitBreaker(name = SERVICE_RESILIENCE4J, fallbackMethod = "serviceResilience4jFallback")
-//    @Retry(name = SERVICE_RESILIENCE4J)
-    @RateLimiter(name = SERVICE_RESILIENCE4J)
+    @Retry(name = SERVICE_RESILIENCE4J)
+//    @RateLimiter(name = SERVICE_RESILIENCE4J)
     public List<Product> getProduct() {
         return productService.getProduct();
     }

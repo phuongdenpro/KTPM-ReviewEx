@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -24,6 +26,7 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public List<Product> getProduct() {
         String url = BASE_URL;
+        System.out.println((Thread.currentThread().getName()+"...runing"+ LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"))));
         System.out.println("Retry method called " + count++ + " times at " + new Date());
         Object[] products = restTemplate.getForEntity(url, Object[].class).getBody();
         List<Product> arr = new ArrayList<>();
